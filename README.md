@@ -1,6 +1,3 @@
-# delphi-server-backend-Frota
-
-
 
 <h1 align="center"> Servidor de BackEnd para sistema de Frota de Veículos  </h1>
 <br>
