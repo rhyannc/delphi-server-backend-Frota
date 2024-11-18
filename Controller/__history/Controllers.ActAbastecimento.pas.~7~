@@ -1,0 +1,51 @@
+unit Controllers.ActAbastecimento;
+
+interface
+
+uses Horse,
+     System.JSON,
+     System.SysUtils,
+     DM;
+
+     procedure RegistrarRotas;
+     procedure InsertAbastecimento(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+
+implementation
+
+procedure RegistrarRotas;
+begin
+    // Configurações de endpoints do Horse
+    THorse.Post('/postabastecimento',  InsertAbastecimento);
+
+end;
+
+procedure InsertTrips(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  body: TJSONObject;
+  local: string;
+  id_driver, id_vehicle, value: integer;
+begin
+      try
+        try
+            dm          := TDtm.Create(nil);
+            body        := Req.Body<TJSONObject>;
+
+            id_driver    := body.GetValue<integer>('id_driver', 0);
+            id_vehicle   := body.GetValue<integer>('id_vehicle', 0);
+            value        := body.GetValue<integer>('value', 0);
+            local        := body.GetValue<string>('local', '');
+
+
+            Res.Send(dm.InsertDriver(id_driver, id_vehicle, value, local)).Status(201);
+
+        except
+          on ex:exception do
+            Res.Send('Houve  um erro:' + ex.Message).Status(502);     //DEU ERRO
+        end;
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+end.

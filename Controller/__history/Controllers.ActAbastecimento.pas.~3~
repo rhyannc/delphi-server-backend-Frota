@@ -1,0 +1,22 @@
+unit Controllers.ActAbastecimento;
+
+interface
+
+uses Horse,
+     System.JSON,
+     System.SysUtils,
+     DM;
+
+     procedure RegistrarRotas;
+     procedure InsertAbastecimento(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+
+implementation
+
+procedure RegistrarRotas;
+begin
+    // Configurações de endpoints do Horse
+    THorse.Post('/postabastecimento',  InsertAbastecimento);
+
+end;
+
+end.

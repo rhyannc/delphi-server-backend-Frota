@@ -1,0 +1,92 @@
+unit Controllers.Drivers;
+
+interface
+
+uses Horse,
+     System.JSON,
+     System.SysUtils,
+     DM;
+
+     procedure RegistrarRotas;
+     procedure ListarDrivers(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure InsertDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure DeleteDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+
+implementation
+
+procedure RegistrarRotas;
+begin
+    // Configurações de endpoints do Horse
+    THorse.Get('/listardrivers',  ListarDrivers);
+    THorse.Post('/postdriver',  InsertDriver);
+    THorse.Delete('/deletedriver/:id_driver',  DeleteDriver);
+
+end;
+
+procedure ListarDrivers(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+begin
+      try
+          dm  := TDtm.Create(nil);
+          Res.Send(dm.ListarDrivers()).Status(200);
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+procedure InsertDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  body: TJSONObject;
+  name: string;
+begin
+      try
+        try
+            dm          := TDtm.Create(nil);
+            body        := Req.Body<TJSONObject>;
+
+            name      := body.GetValue<string>('name', '');
+
+            Res.Send(dm.InsertDriver(name)).Status(201);
+
+        except
+          on ex:exception do
+            Res.Send('Houve  um erro:' + ex.Message).Status(502);     //DEU ERRO
+        end;
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+
+// Função para deletar um registro específico
+procedure DeleteDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  id_device: integer;
+  Json_ret: TJSONObject;
+begin
+     try
+        try
+            dm       := TDtm.Create(nil);
+
+            try
+               id_device  := Req.Params.Items['id_device'].ToInteger;
+            except
+               id_device := 0;
+            end;
+
+            Json_ret := dm.ExcluirDriver(id_device);
+            Res.Send('Device Id  ' + inttostr(id_device) + '  Foi Excluido!').Status(201);
+
+        except
+          on ex:exception do
+            Res.Send('Ops! ' + ex.Message).Status(502);     //DEU ERRO
+        end;
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+end.

@@ -1,0 +1,22 @@
+unit Controllers.ActTrips;
+
+interface
+
+uses Horse,
+     System.JSON,
+     System.SysUtils,
+     DM;
+
+     procedure RegistrarRotas;
+     procedure InsertTrips(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+
+implementation
+
+procedure RegistrarRotas;
+begin
+    // Configurações de endpoints do Horse
+    THorse.Post('/posttrips',  InsertTrips);
+
+end;
+
+end.

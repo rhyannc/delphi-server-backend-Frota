@@ -1,0 +1,102 @@
+unit Controllers.Drivers;
+
+interface
+
+uses Horse,
+     System.JSON,
+     System.SysUtils,
+     DM;
+
+     procedure RegistrarRotas;
+     procedure ListarDrivers(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure InsertDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure DeleteDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+
+implementation
+
+procedure RegistrarRotas;
+begin
+    // Configurações de endpoints do Horse
+    THorse.Get('/listardrivers',  ListarDrivers);
+    THorse.Post('/postdriver',  InsertDriver);
+    THorse.Delete('/deletedriver/:id_driver',  DeleteDriver);
+
+end;
+
+procedure ListarDrivers(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+begin
+      try
+          dm  := TDtm.Create(nil);
+          Res.Send(dm.ListarDrivers()).Status(200);
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+procedure InsertDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  body: TJSONObject;
+  name: string;
+begin
+      try
+        try
+            dm          := TDtm.Create(nil);
+            body        := Req.Body<TJSONObject>;
+
+            name      := body.GetValue<string>('name', '');
+
+            if name = '' then
+            raise Exception('Nome do motorista não pode ser vazio');
+
+            Res.Send(dm.InsertDriver(name)).Status(201);
+
+        except
+          on ex:exception do
+            Res.Send('Houve  um erro:' + ex.Message).Status(502);     //DEU ERRO
+        end;
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+
+// Função para deletar um registro específico
+procedure DeleteDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  id_driver: integer;
+  Json_ret: TJSONObject;
+begin
+     try
+        try
+            dm       := TDtm.Create(nil);
+
+            try
+               id_driver  := Req.Params.Items['id_driver'].ToInteger;
+            except
+               id_driver := 0;
+            end;
+
+            if id_driver = 0 then
+            raise Exception('ID do motorista inválido');
+
+            Json_ret := dm.ExcluirDriver(id_driver);
+
+            if Json_ret = nil then
+            raise Exception('Motorista não encontrado');
+
+            Res.Send('Driver Id  ' + inttostr(id_driver) + '  Foi Excluido!').Status(200);
+
+        except
+          on ex:exception do
+            Res.Send('Ops! ' + ex.Message).Status(404);     //DEU ERRO
+        end;
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+end.

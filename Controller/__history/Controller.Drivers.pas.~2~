@@ -1,0 +1,104 @@
+unit Controller.Drivers;
+
+interface
+
+uses Horse,
+     System.JSON,
+     System.SysUtils,
+     DM;
+
+     procedure RegistrarRotas;
+     procedure ListarDevice(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure InsertDevice(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure DeleteDevice(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+
+implementation
+
+procedure RegistrarRotas;
+begin
+    // Configurações de endpoints do Horse
+    THorse.Get('/listardevice',  ListarDevice);
+    THorse.Post('/postdevice',  InsertDevice);
+    THorse.Delete('/deletedevice/:id_device',  DeleteDevice);
+
+end;
+
+procedure ListarDevice(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  nome: string;
+begin
+      try
+          dm  := TDtm.Create(nil);
+
+
+          Res.Send(dm.ListarDevice()).Status(200);
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+procedure InsertDevice(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  body: TJSONObject;
+  device, ip, mac, windows, processador, memoria, memolivre, anydesk, office, setor, obs: string;
+begin
+      try
+        try
+            dm          := TDtm.Create(nil);
+            body        := Req.Body<TJSONObject>;
+            device      := body.GetValue<string>('device', '');
+            ip          := body.GetValue<string>('ip', '');
+            mac         := body.GetValue<string>('mac', '');
+            windows     := body.GetValue<string>('windows', '');
+            processador := body.GetValue<string>('processador', '');
+            memoria     := body.GetValue<string>('memoria', '');
+            memolivre   := body.GetValue<string>('memolivre', '');
+            anydesk     := body.GetValue<string>('anydesk', '');
+            office      := body.GetValue<string>('office', '');
+            setor       := body.GetValue<string>('setor', '');
+            obs         := body.GetValue<string>('obs', '');
+
+            Res.Send(dm.InsertDevice(device, ip, mac, windows, processador, memoria, memolivre, anydesk, office, setor, obs)).Status(201);
+
+        except
+          on ex:exception do
+            Res.Send('Houve  um erro:' + ex.Message).Status(502);     //DEU ERRO
+        end;
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+
+// Função para deletar um registro específico
+procedure DeleteDevice(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  id_device: integer;
+  Json_ret: TJSONObject;
+begin
+     try
+        try
+            dm       := TDtm.Create(nil);
+
+            try
+               id_device  := Req.Params.Items['id_device'].ToInteger;
+            except
+               id_device := 0;
+            end;
+
+            Json_ret := dm.ExcluirDevice(id_device);
+            Res.Send('Device Id  ' + inttostr(id_device) + '  Foi Excluido!').Status(201);
+
+        except
+          on ex:exception do
+            Res.Send('Ops! ' + ex.Message).Status(502);     //DEU ERRO
+        end;
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
+end.

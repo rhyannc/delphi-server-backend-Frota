@@ -1,0 +1,17 @@
+unit Controllers.Services;
+
+interface
+
+uses Horse,
+     System.JSON,
+     System.SysUtils,
+     DM;
+
+     procedure RegistrarRotas;
+     procedure ListarServices(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure InsertService(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure DeleteService(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+
+implementation
+
+end.
