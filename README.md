@@ -15,3 +15,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 
 Sistema Simples e objetivo para controle de Abastecimento, Serviços e Viagens para Frota de Veiculos e Motoristas.<br>
+
+
+<img src="/layout.png">
