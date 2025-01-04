@@ -115,6 +115,8 @@
         <DCCReference Include="Controller\Controllers.ActService.pas"/>
         <DCCReference Include="Controller\Controllers.ActTrips.pas"/>
         <DCCReference Include="Controller\Controllers.Relatorios.pas"/>
+        <DCCReference Include="Controller\Controllers.Rates.pas"/>
+        <DCCReference Include="Controller\Controllers.Client.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

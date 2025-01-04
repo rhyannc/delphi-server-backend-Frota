@@ -11,7 +11,9 @@ uses
   Controllers.ActAbastecimento in 'Controller\Controllers.ActAbastecimento.pas',
   Controllers.ActService in 'Controller\Controllers.ActService.pas',
   Controllers.ActTrips in 'Controller\Controllers.ActTrips.pas',
-  Controllers.Relatorios in 'Controller\Controllers.Relatorios.pas';
+  Controllers.Relatorios in 'Controller\Controllers.Relatorios.pas',
+  Controllers.Rates in 'Controller\Controllers.Rates.pas',
+  Controllers.Client in 'Controller\Controllers.Client.pas';
 
 {$R *.res}
 

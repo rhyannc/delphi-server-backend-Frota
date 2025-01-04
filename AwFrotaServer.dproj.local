@@ -2,32 +2,36 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2024/11/13 18:42:35.000.409,=C:\Users\rhyan\OneDrive\OTHER\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 18:48:30.000.813,C:\TRUCK\BACKEND\UnitPrincipal.pas=C:\Users\rhyan\OneDrive\OTHER\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 18:48:30.000.813,C:\TRUCK\BACKEND\UnitPrincipal.dfm=C:\Users\rhyan\OneDrive\OTHER\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2024/11/13 18:49:17.000.758,C:\TRUCK\BACKEND\AwFrotaServer.dproj=C:\Users\rhyan\OneDrive\OTHER\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/11/13 18:48:30.000.813,C:\Users\rhyan\OneDrive\OTHER\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\TRUCK\BACKEND\UnitPrincipal.pas</Transaction>
+    <Transaction>2024/11/13 18:48:30.000.813,C:\Users\rhyan\OneDrive\OTHER\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\TRUCK\BACKEND\UnitPrincipal.dfm</Transaction>
+    <Transaction>2024/11/13 18:49:17.000.758,C:\Users\rhyan\OneDrive\OTHER\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\TRUCK\BACKEND\AwFrotaServer.dproj</Transaction>
     <Transaction>2024/11/13 18:50:43.000.396,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 18:51:02.000.935,C:\TRUCK\BACKEND\DM.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 18:51:02.000.935,C:\TRUCK\BACKEND\DM.dfm=C:\TRUCK\BACKEND\Unit1.dfm</Transaction>
+    <Transaction>2024/11/13 18:51:02.000.935,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\DM.pas</Transaction>
+    <Transaction>2024/11/13 18:51:02.000.935,C:\TRUCK\BACKEND\Unit1.dfm=C:\TRUCK\BACKEND\DM.dfm</Transaction>
     <Transaction>2024/11/13 19:20:53.000.326,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 19:22:30.000.351,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controller.Drivers.pas</Transaction>
-    <Transaction>2024/11/13 20:02:21.000.771,C:\TRUCK\BACKEND\Controller\Controller.Drivers.pas=C:\TRUCK\BACKEND\Controller\Controllers.Drivers.pas</Transaction>
+    <Transaction>2024/11/13 19:22:30.000.351,C:\TRUCK\BACKEND\Controller\Controller.Drivers.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
+    <Transaction>2024/11/13 20:02:21.000.771,C:\TRUCK\BACKEND\Controller\Controllers.Drivers.pas=C:\TRUCK\BACKEND\Controller\Controller.Drivers.pas</Transaction>
     <Transaction>2024/11/13 20:23:32.000.232,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 20:24:24.000.923,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controllers.Vheicles.pas</Transaction>
+    <Transaction>2024/11/13 20:24:24.000.923,C:\TRUCK\BACKEND\Controller\Controllers.Vheicles.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
     <Transaction>2024/11/13 20:24:43.000.946,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 20:25:21.000.788,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controllers.Services.pas</Transaction>
-    <Transaction>2024/11/13 20:25:35.000.085,C:\TRUCK\BACKEND\Controller\Controllers.Vheicles.pas=C:\TRUCK\BACKEND\Controller\Controllers.Vehicles.pas</Transaction>
+    <Transaction>2024/11/13 20:25:21.000.788,C:\TRUCK\BACKEND\Controller\Controllers.Services.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
+    <Transaction>2024/11/13 20:25:35.000.085,C:\TRUCK\BACKEND\Controller\Controllers.Vehicles.pas=C:\TRUCK\BACKEND\Controller\Controllers.Vheicles.pas</Transaction>
     <Transaction>2024/11/13 20:25:46.000.705,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 20:26:13.000.276,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controllers.Points.pas</Transaction>
+    <Transaction>2024/11/13 20:26:13.000.276,C:\TRUCK\BACKEND\Controller\Controllers.Points.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
     <Transaction>2024/11/13 20:26:19.000.623,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 20:26:37.000.377,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controllers.Material.pas</Transaction>
+    <Transaction>2024/11/13 20:26:37.000.377,C:\TRUCK\BACKEND\Controller\Controllers.Material.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
     <Transaction>2024/11/13 23:19:34.000.180,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 23:20:04.000.331,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controllers.ActAbastecimento.pas</Transaction>
+    <Transaction>2024/11/13 23:20:04.000.331,C:\TRUCK\BACKEND\Controller\Controllers.ActAbastecimento.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
     <Transaction>2024/11/13 23:20:08.000.310,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 23:20:29.000.486,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controllers.ActService.pas</Transaction>
+    <Transaction>2024/11/13 23:20:29.000.486,C:\TRUCK\BACKEND\Controller\Controllers.ActService.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
     <Transaction>2024/11/13 23:20:33.000.466,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/13 23:20:53.000.091,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controllers.ActTrips.pas</Transaction>
+    <Transaction>2024/11/13 23:20:53.000.091,C:\TRUCK\BACKEND\Controller\Controllers.ActTrips.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
     <Transaction>2024/11/13 23:28:25.000.482,C:\TRUCK\BACKEND\Controller\Controllers.Services.pas=</Transaction>
-    <Transaction>2024/11/16 16:27:20.450,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
-    <Transaction>2024/11/16 16:27:46.920,C:\TRUCK\BACKEND\Controller\Controllers.Relatorios.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
+    <Transaction>2024/11/16 16:27:20.000.450,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
+    <Transaction>2024/11/16 16:27:46.000.920,C:\TRUCK\BACKEND\Unit1.pas=C:\TRUCK\BACKEND\Controller\Controllers.Relatorios.pas</Transaction>
+    <Transaction>2024/11/19 22:17:12.000.418,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
+    <Transaction>2024/11/19 22:17:36.000.086,C:\TRUCK\BACKEND\Controller\Controllers.Rates.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
+    <Transaction>2024/11/19 22:19:08.000.055,=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
+    <Transaction>2024/11/19 22:19:29.000.466,C:\TRUCK\BACKEND\Controller\Controllers.Client.pas=C:\TRUCK\BACKEND\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

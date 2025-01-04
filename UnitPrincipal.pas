@@ -50,6 +50,8 @@ uses Horse,
   Controllers.ActAbastecimento,
   Controllers.ActService,
   Controllers.ActTrips,
+  Controllers.Client,
+  Controllers.Rates,
   Controllers.Relatorios;
 
 
@@ -121,6 +123,8 @@ begin
     Controllers.ActAbastecimento.RegistrarRotas;
     Controllers.ActService.RegistrarRotas;
     Controllers.ActTrips.RegistrarRotas;
+    Controllers.Client.RegistrarRotas;
+    Controllers.Rates.RegistrarRotas;
     Controllers.Relatorios.RegistrarRotas;
 
 
