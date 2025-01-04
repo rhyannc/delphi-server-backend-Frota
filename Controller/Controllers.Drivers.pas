@@ -12,6 +12,7 @@ uses Horse,
      procedure ListarDriverID(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
      procedure InsertDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
      procedure UpdateDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+     procedure ExcluirDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
      procedure DeleteDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
 
 implementation
@@ -23,6 +24,7 @@ begin
     THorse.Post('/listardriverid',  ListarDriverID);
     THorse.Post('/postdriver',  InsertDriver);
     THorse.Put('/updatedriver', UpdateDriver);
+    THorse.Delete('/excluirdriver/:id_driver',  ExcluirDriver);
     THorse.Delete('/deletedriver/:id_driver',  DeleteDriver);
 
 end;
@@ -60,16 +62,21 @@ procedure InsertDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
 var
   dm:TDtm;
   body: TJSONObject;
-  name: string;
+  name, cpf, phone, commission: string;
+  percent_commission: Currency;
 begin
       try
         try
             dm          := TDtm.Create(nil);
             body        := Req.Body<TJSONObject>;
 
-            name      := body.GetValue<string>('name', '');
+            name                 := body.GetValue<string>('name', '');
+            cpf                  := body.GetValue<string>('cpf', '');
+            phone                := body.GetValue<string>('phone', '');
+            commission           := body.GetValue<string>('commission', '');
+            percent_commission   := body.GetValue<Currency>('percent_commission', 0);
 
-            Res.Send(dm.InsertDriver(name)).Status(201);
+            Res.Send(dm.InsertDriver(name, cpf, phone, commission, percent_commission)).Status(201);
 
         except
           on ex:exception do
@@ -85,8 +92,9 @@ procedure UpdateDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
 var
   dm:TDtm;
   body, Json_ret: TJSONObject;
-  name: string;
+  name, cpf, phone, commission: string;
   id_driver: integer;
+  percent_commission: Currency;
 begin
      try
         try
@@ -96,7 +104,12 @@ begin
             id_driver := body.GetValue<integer>('id_driver', 0);
             name     := body.GetValue<string>('name', '');
 
-            Json_ret := dm.UpdateDriver(id_driver, name);
+            cpf                := body.GetValue<string>('cpf', '');
+            phone                := body.GetValue<string>('phone', '');
+            commission           := body.GetValue<string>('commission', '');
+            percent_commission   := body.GetValue<Currency>('percent_commission', 0);
+
+            Json_ret := dm.UpdateDriver(id_driver, name, cpf, phone, commission, percent_commission);
             Res.Send<TJsonObject>(Json_ret).Status(201);
 
         except
@@ -107,6 +120,38 @@ begin
           FreeAndNil(dm);
       end;
 end;
+
+// Função para "Excluir" remover da visão os dados desse Driver
+procedure ExcluirDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
+var
+  dm:TDtm;
+  id_driver: integer;
+  Json_ret: TJSONObject;
+begin
+     try
+        try
+            dm       := TDtm.Create(nil);
+
+            try
+               id_driver  := Req.Params.Items['id_driver'].ToInteger;
+            except
+               id_driver := 0;
+            end;
+
+            Json_ret := dm.ExcluirDriver(id_driver);
+
+
+            Res.Send('Driver Id  ' + inttostr(id_driver) + '  Foi Excluido!').Status(200);
+
+        except
+          on ex:exception do
+            Res.Send('Ops! ' + ex.Message).Status(404);     //DEU ERRO
+        end;
+      finally
+          FreeAndNil(dm);
+      end;
+end;
+
 
 // Função para deletar um registro específico
 procedure DeleteDriver(Req: THorseRequest; Res: THorseResponse; Next: Tproc);
@@ -125,7 +170,7 @@ begin
                id_driver := 0;
             end;
 
-            Json_ret := dm.ExcluirDriver(id_driver);
+            Json_ret := dm.DeleteDriver(id_driver);
 
 
             Res.Send('Driver Id  ' + inttostr(id_driver) + '  Foi Excluido!').Status(200);

@@ -111,7 +111,7 @@ begin
                id_vehicle := 0;
             end;
 
-            Json_ret := dm.ExcluirVehicle(id_vehicle);
+            Json_ret := dm.DeleteVehicle(id_vehicle);
 
 
             Res.Send('Vvehicle Id  ' + inttostr(id_vehicle) + '  Foi Excluido!').Status(200);
